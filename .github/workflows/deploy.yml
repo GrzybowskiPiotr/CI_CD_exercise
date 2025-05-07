@@ -41,5 +41,5 @@ jobs:
           NETLIFY_DEPLOY_MESSAGE: 'Deployed from GitHub action'
 
       - name: Deploy to Vercel
-        if: ${{ inputs.deploy-vercel == 'true' }}
+        if: ${{ inputs.deploy-vercel == true }}
         run: echo "Deploying to Vercel"
