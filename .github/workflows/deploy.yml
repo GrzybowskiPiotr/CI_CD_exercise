@@ -1,6 +1,11 @@
 name: Depoly to Netlify
 on:
   workflow_dispatch:
+    inputs:
+      deploy-vercel:
+        type: boolean
+        description: 'Deploy to Vercel'
+        default: false
 jobs:
   app-setup:
     runs-on: ubuntu-latest
@@ -34,3 +39,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_MESSAGE: 'Deployed from GitHub action'
+
+      - name: Deploy to Vercel
+        if: ${{ inputs.deploy-vercel == 'true' }}
+        run: console.log('Deploying to Vercel...')
