@@ -1,4 +1,4 @@
-# Opanuj Frontend: AI Edition - Frontend Bootstrap
+# Rick and Morty - Characters Catalogue
 
 ![](./_resources/img/header.png)
 
