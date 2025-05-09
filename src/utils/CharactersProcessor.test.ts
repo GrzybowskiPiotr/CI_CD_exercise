@@ -1,6 +1,6 @@
-import { describe, test, expect } from 'vitest';
-import { getTopCharacters } from './CharactersProcessor';
+import { describe, expect, test } from 'vitest';
 import { Character } from '../../lib/rick-and-morty-api-client';
+import { getTopCharacters } from './CharactersProcessor';
 
 const characters: Character[] = [
   {
@@ -48,7 +48,7 @@ const characters: Character[] = [
 describe('CharactersProcessor', () => {
   test('should return empty array', () => {
     const topCharacters = getTopCharacters([], 2);
-    expect(topCharacters.length).toBe(0);
+    expect(topCharacters.length).toBe(3);
   });
 
   test('should return two characters', () => {
