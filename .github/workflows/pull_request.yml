@@ -46,12 +46,12 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const {DEPLOY_URL} = process.env;
+            const { DEPLOY_URL } = process.env;
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `🔍  Preview URL: ${DEPLOY_URL}`,
+              body: `🔍  Preview URL: ${ DEPLOY_URL }`,
             });
 
       - name: Get and post ZenQuote
@@ -62,7 +62,7 @@ jobs:
             const data = await res.json();
             const quote = data[0].q;
             const author = data[0].a;
-            const message = `🌟 **Motywacja dnia** 🌟\n> "${quote}"\n— _${author}_`;
+            const message = `🌟 **Daily Motivation quote** 🌟\n> "${quote}"\n— _${author}_`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
