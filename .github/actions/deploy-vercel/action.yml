@@ -11,7 +11,7 @@ impots:
     default: 'production'
 
 runs:
-  useing: 'composite'
+  using: 'composite'
   steps:
     - name: Install Vercel CLI
       run: npm install --global vercel@canary
