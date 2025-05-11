@@ -62,7 +62,7 @@ jobs:
             const data = await res.json();
             const quote = data[0].q;
             const author = data[0].a;
-            const message = `🌟 **Motywacja dnia** 🌟\n> "${quote}"\n— _${author}_`;
+            const message = `🌟 **Daily Motivation quote** 🌟\n> "${quote}"\n— _${author}_`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
