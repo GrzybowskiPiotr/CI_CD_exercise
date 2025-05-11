@@ -1,0 +1,66 @@
+name: Deploy to Vercel
+description: Deploy Vercel in two modes
+
+impots:
+  vercel-tocken:
+    description: 'Vercel token'
+    required: true
+  mode:
+    description: 'Deployment mode'
+    required: true
+    default: 'production'
+
+runs:
+  useing: 'composite'
+  steps:
+    - name: Install Vercel CLI
+      run: npm install --global vercel@canary
+      shell: bash
+
+    - name: PROD Vercel Deployment
+      if: ${{inputs.mode == 'production'}}
+      run: |
+        vercel pull --yes --environment=production --token=${{ inputs.vercel-token }}
+        vercel build --prod --token=${{ inputs.vercel-token }}
+        vercel deploy --prebiuld --prod --token=${{ inputs.vercel-token }}
+      shell: bash
+
+    - name: PREVIEW Vercel Deployment
+      if: ${{inputs.mode == 'preview'}}
+      run: |
+        vercel pull --yes --environment=preview --token=${{ inputs.vercel-token }}
+        vercel build --token=${{ inputs.vercel-token }}
+        DEPLOY_OUTPUT="$(vercel deploy --token=${{ inputs.vercel-token }})"
+        DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep http | tail -n 1)
+        echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Comment with preview URL
+      if: ${{ inputs.mode == 'preview' }}
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const { DEPLOY_URL } = process.env;
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `🔍  Preview URL: ${DEPLOY_URL}`,
+          });
+
+    - name: Get and post ZenQuote
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const res = await fetch("https://zenquotes.io?api=random")
+          const data = await res.json();
+          const quote = data[0].q;
+          const author = data[0].a;
+          const message = `🌟 **Motywacja dnia** 🌟\n> "${quote}"\n— _${author}_`;
+
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.issue.number,
+            body: message
+          });
