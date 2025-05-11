@@ -7,7 +7,7 @@ runs:
     - name: Configure node
       uses: actions/setup-node@v4
       with:
-        node-verision-file: ./.nvmrc
+        node-version-file: ./.nvmrc
 
     - name: Install dependencies
       run: npm ci
