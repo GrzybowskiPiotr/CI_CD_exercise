@@ -19,8 +19,8 @@ jobs:
       - name: Linit Code
         run: npm run lint
 
-      - name: Run unit tests
-        run: npm test
+      - name: Run code formatting check and unit tests
+        uses: ./.github/actions/CodeFormatting-and-unit-test
 
       - name: Deploy app to Vercel preview env
         uses: ./.github/actions/deploy-vercel
