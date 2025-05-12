@@ -4,68 +4,13 @@ on:
   push:
     branches:
       - master
-
-  # Uncomment the following lines to enable manual deployment via GitHub Actions UI
-  # workflow_dispatch:
-  #   inputs:
-  #     deploy-netlify:
-  #       type: boolean
-  #       description: Enable Netlify deployment
-  #       default: true
-  #     deploy-vercel:
-  #       type: boolean
-  #       description: Enable Vercel deployment
-  #       default: true
-
-# on:
-#   workflow_dispatch:
-#     inputs:
-#       deploy-netlify:
-#         type: boolean
-#         description: Enable Netlify deployment
-#         default: true
-#       deploy-vercel:
-#         type: boolean
-#         description: Enable Vercel deployment
-#         default: true
 jobs:
-  app-setup:
-    runs-on: ubuntu-latest
-    env:
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  deploy-netlify:
+    uses: ./.github/workflows/deploy-netlify.yml
+    secrets:
       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
-      - name: Configure node
-        uses: ./.github/actions/setup-project
-
-      - name: Linit Code
-        run: npm run lint
-
-      - name: Run unit tests
-        run: npm test
-        continue-on-error: false
-
-      - name: Build
-        run: npm run build
-
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3.0
-        with:
-          publish-dir: './dist'
-          production-branch: master
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: 'Deploy from GitHub Actions'
-
-      - name: Deploy app to Vercel production env
-        uses: ./.github/actions/deploy-vercel
-        with:
-          mode: 'production'
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  deploy-vercel:
+    uses: ./.github/workflows/deploy-vercel.yml
+    secrets: inherit
