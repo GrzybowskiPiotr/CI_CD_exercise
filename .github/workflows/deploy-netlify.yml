@@ -25,7 +25,7 @@ jobs:
       - name: Build app
         run: npm run build
         env:
-          VITE_ENVIROMENT: ${{import.meta.env.__APP_VERSION__}}
+          VITE_ENVIRONMENT: ${{ ... }}
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
