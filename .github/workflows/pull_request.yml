@@ -7,7 +7,7 @@ on:
 jobs:
   pr-check:
     environment:
-      name: 'Preview'
+      name: 'preview'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
