@@ -8,7 +8,7 @@ const App = () => {
         <h1 className="text-xl font-bold text-center">🚀 Rick and Morty - Fan Service - CI_CD_execise {import.meta.env.__APP_VERSION__}</h1>
       </div>
       <Outlet />
-      {/* <VersionTech/> */}
+      <VersionTech/>
     </div>
   );
 };
