@@ -10,7 +10,8 @@
     "lint": "eslint src",
     "test": "vitest src",
     "test:e2e": "npx playwright install && playwright test",
-    "format:check": "prettier --check . "
+    "format:check": "prettier --check . ",
+    "format:fix": "prettier --write ."
   },
   "author": "Przeprogramowani",
   "license": "ISC",
