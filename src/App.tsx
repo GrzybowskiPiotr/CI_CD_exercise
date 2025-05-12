@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-
+import { VersionTech } from './components/vesionTech';
 const App = () => {
   return (
     <div>
@@ -8,6 +8,7 @@ const App = () => {
         <h1 className="text-xl font-bold text-center">🚀 Rick and Morty - Fan Service - CI_CD_execise Netlify only conditionaly vercel</h1>
       </div>
       <Outlet />
+      <VersionTech/>
     </div>
   );
 };
