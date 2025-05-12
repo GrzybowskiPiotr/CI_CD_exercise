@@ -1,4 +1,4 @@
-name: Code Formatting and Unit Test
+name: Code Formatting check and Unit Test
 description: Run code formatting and unit tests
 
 runs:
