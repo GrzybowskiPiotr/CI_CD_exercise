@@ -1,10 +1,12 @@
-name: Deploy
+name: Deploy - Vercel
 
 on:
   workflow_call:
 
 jobs:
-  deploy:
+  deploy-vercel:
+    environment:
+      name: 'Staging'
     runs-on: ubuntu-latest
 
     steps:
@@ -14,14 +16,13 @@ jobs:
       - name: Configure node
         uses: ./.github/actions/setup-project
 
-      - name: Linit Code
+      - name: Lint code
         run: npm run lint
 
       - name: Run unit tests
-        run: npm test
-        continue-on-error: false
+        run: npm run test
 
-      - name: Build
+      - name: Build app
         run: npm run build
 
       - name: Deploy app to Vercel production env
