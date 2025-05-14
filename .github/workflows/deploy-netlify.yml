@@ -24,8 +24,8 @@ jobs:
       - name: Lint code
         run: npm run lint
 
-      - name: Run code formatting and unit tests
-        uses: ./.github/acttions/CodeFormatting-and-unit-test
+      - name: Run code formatting check and unit tests
+        uses: ./.github/actions/CodeFormatting-and-unit-test
 
       - name: Build app
         run: npm run build
