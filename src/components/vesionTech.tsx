@@ -1,8 +1,10 @@
-import React from 'react';
-
 export function VersionTech() {
-  return <div>
-    <p>App Version:<span>{__APP_VERSION__}</span></p>
-    <p>mode: <span>{import.meta.env.VITE_ENVIRONMENT}</span></p>
-  </div>
+  const env = import.meta.env.VITE_ENVIRONMENT;
+  return (
+    <div className="text-center mt-4 p-2 relative right-0 bottom-0 border-gray-100 rounded w-fit flex flex-col items-start">
+      <p>
+        ENV: <span>{env || 'DEV'}</span> VER:<span>{__APP_VERSION__}</span>
+      </p>
+    </div>
+  );
 }
