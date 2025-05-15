@@ -37,3 +37,5 @@ jobs:
 
       - name: E2E test after deploy on Steaging env
         uses: ./.github/actions/e2e-test-check
+        with:
+          url: ${{ env.E2E_BASE_URL }}
