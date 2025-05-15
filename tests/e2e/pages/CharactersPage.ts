@@ -9,16 +9,8 @@ export class CharactersPage {
     this.page = page;
   }
 
-  // async navigate() {
-  //   const response = await this.page.goto(this.url);
-  //   console.log('>>>> Navigate to:', this.page.url());
-  //   return response;
-  // }
-  async navigate() {
-    console.log('>>>>> Navigating to:', this.url);
-    const response = await this.page.goto(this.url);
-    console.log('>>>>> Final URL:', this.page.url());
-    return response;
+  navigate() {
+    return this.page.goto(this.url);
   }
 
   async navigateToCharacterDetails(characterId: string) {
