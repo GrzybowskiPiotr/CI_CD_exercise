@@ -5,14 +5,14 @@ inputs:
   baseUrl:
     description: 'Base URL for the E2E tests'
     required: true
-    default: 'https://staging.example.com'
+  test-url:
+    description: TEST url pass to action""
+    required: true
 
 runs:
   using: 'composite'
   steps:
     - name: Run E2E test
       run: |
-        echo "Running E2E tests against $E2E_BASE_URL"
+        echo "Running E2E tests with base URL: ${{ inputs.test-url }}"
       shell: bash
-      env:
-        E2E_BASE_URL: ${{ inputs.baseUrl }}
