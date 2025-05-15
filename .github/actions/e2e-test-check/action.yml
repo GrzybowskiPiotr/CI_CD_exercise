@@ -6,7 +6,7 @@ inputs:
     description: 'Base URL for the E2E tests'
     required: true
   test-url:
-    description: TEST url pass to action""
+    description: 'TEST url pass to action'
     required: true
 
 runs:
@@ -15,4 +15,5 @@ runs:
     - name: Run E2E test
       run: |
         echo "Running E2E tests with base URL: ${{ inputs.test-url }}"
+        echo "Base URL: ${{ inputs.baseUrl }}"
       shell: bash
