@@ -1,0 +1,16 @@
+name: E2E tests
+description: Run E2E tests
+
+inputs:
+  baseUrl:
+    description: 'Base URL for the E2E tests'
+    required: true
+    default: 'https://staging.example.com'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run E2E test
+      run: |
+        npm run test:e2e -- --baseUrl=${{ inputs.baseUrl }}
+      shell: bash
