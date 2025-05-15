@@ -12,12 +12,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: show inputs
-      run: |
-        echo "Base URL: ${{ inputs.baseUrl }}"
-        echo "Test URL: ${{ inputs.test-url }}"
-      shell: bash
     - name: Show env
       run: |
-        echo "Base URL: $BASE_URL"
+        echo "Base URL: $DEPLOY_URL"
       shell: bash
