@@ -10,6 +10,7 @@ export class CharactersPage {
   }
 
   navigate() {
+    console.log('>>>>>  URL from navigate method:', this.page.url());
     return this.page.goto(this.url);
   }
 
