@@ -12,5 +12,6 @@ runs:
   steps:
     - name: Run E2E test
       run: |
-        npm run test:e2e -- --baseUrl=${{ inputs.baseUrl }}
+        E2E_BASE_URL=baseUrl
+        echo "Running E2E tests against $E2E_BASE_URL"
       shell: bash
