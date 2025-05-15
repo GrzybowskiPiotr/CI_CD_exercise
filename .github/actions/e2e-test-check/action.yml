@@ -1,23 +1,10 @@
 name: E2E tests
 description: Run E2E tests
 
-inputs:
-  baseUrl:
-    description: 'Base URL for the E2E tests'
-    required: true
-  test-url:
-    description: 'TEST url pass to action'
-    required: true
-
 runs:
   using: 'composite'
   steps:
-    - name: show inputs
-      run: |
-        echo "Base URL: ${{ inputs.baseUrl }}"
-        echo "Test URL: ${{ inputs.test-url }}"
-      shell: bash
     - name: Show env
       run: |
-        echo "Base URL: $BASE_URL"
+        echo "Base URL: $DEPLOY_URL"
       shell: bash
