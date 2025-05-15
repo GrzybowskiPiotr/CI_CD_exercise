@@ -11,8 +11,6 @@ inputs:
 
 runs:
   using: 'composite'
-  env:
-    BASE_URL: { { $DEPLOY_URL } }
   steps:
     - name: show inputs
       run: |
