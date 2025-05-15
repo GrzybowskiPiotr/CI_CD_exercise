@@ -12,8 +12,9 @@ runs:
     - name: Show env
       run: |
         echo "Running tests on: $E2E_BASE_URL"
-        npm run test:e2e
-        npx playwright show-trace test-results/tests-details-navigation-to-characters-list-chromium-retry1/trace.zip
+        echo: "CI: $CI"
+
       shell: bash
       env:
         E2E_BASE_URL: ${{ inputs.url }}
+        ci: ${{process.env.CI}}
