@@ -37,5 +37,3 @@ jobs:
 
       - name: E2E test after deploy on Steaging env
         uses: ./.github/actions/e2e-test-check
-        with:
-          baseUrl: ${{ steps.deploy-vercel.outputs.deployment-url }}
