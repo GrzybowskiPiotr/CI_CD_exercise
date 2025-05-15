@@ -34,7 +34,7 @@ runs:
     - name: PREVIEW Vercel Deployment
       if: ${{ inputs.mode == 'preview' }}
       env:
-        VITE_ENVIRONMENT: ${{ 'preview' }}
+        VITE_ENVIRONMENT: ${{ 'Preview' }}
       run: |
         vercel pull --yes --environment=preview --token=${{ inputs.vercel-token }}
         vercel build --token=${{ inputs.vercel-token }}
