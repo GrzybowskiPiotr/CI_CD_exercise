@@ -13,8 +13,8 @@ runs:
       run: |
         echo "Running tests on: $E2E_BASE_URL"
         echo "CI: $CI"
-
+        npm run test:e2e
       shell: bash
       env:
         E2E_BASE_URL: ${{ inputs.url }}
-        CI: ${{env.CI}}
+        CI: 'true'
