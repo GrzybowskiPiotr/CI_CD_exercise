@@ -1,6 +1,11 @@
 name: E2E tests
 description: Run E2E tests
 
+inputs:
+  url:
+    description: 'Url to run the E2E test'
+    required: true
+
 runs:
   using: 'composite'
   steps:
@@ -10,4 +15,4 @@ runs:
         npm run test:e2e
       shell: bash
       env:
-        E2E_BASE_URL: ${{ env.E2E_BASE_URL }}
+        E2E_BASE_URL: ${{ inputs.url }}
