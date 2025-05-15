@@ -5,7 +5,10 @@ runs:
   using: 'composite'
   steps:
     - name: Show env
+      env:
+        CI: true
+        E2E_BASE_URL: ${{ env.DEPLOY_URL }}
       run: |
-        echo "Base URL: $DEPLOY_URL"
-        npm run BASE_URL=$DEPLOY_URL test:e2e
+        echo "Running tests on: $E2E_BASE_URL"
+        npm run test:e2e
       shell: bash
