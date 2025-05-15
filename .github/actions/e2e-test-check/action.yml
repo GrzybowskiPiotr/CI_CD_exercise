@@ -11,9 +11,15 @@ inputs:
 
 runs:
   using: 'composite'
+  env:
+    BASE_URL: { { $DEPLOY_URL } }
   steps:
-    - name: Run E2E test
+    - name: show inputs
       run: |
-        echo "Running E2E tests with base URL: ${{ inputs.test-url }}"
         echo "Base URL: ${{ inputs.baseUrl }}"
+        echo "Test URL: ${{ inputs.test-url }}"
+      shell: bash
+    - name: Show env
+      run: |
+        echo "Base URL: $BASE_URL"
       shell: bash
