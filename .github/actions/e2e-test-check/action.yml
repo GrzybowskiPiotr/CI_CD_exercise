@@ -17,4 +17,4 @@ runs:
       shell: bash
       env:
         E2E_BASE_URL: ${{ inputs.url }}
-        ci: ${{process.env.CI}}
+        ci: ${{env.CI}}
