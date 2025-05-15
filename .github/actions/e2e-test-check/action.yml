@@ -5,7 +5,7 @@ runs:
   using: 'composite'
   steps:
     - name: Show env
-    - uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
