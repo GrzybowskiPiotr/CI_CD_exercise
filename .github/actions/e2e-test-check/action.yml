@@ -9,3 +9,6 @@ runs:
         echo "Running tests on: $E2E_BASE_URL"
         npm run test:e2e
       shell: bash
+      env:
+        CI: true
+        E2E_BASE_URL: ${{ env.E2E_BASE_URL }}
