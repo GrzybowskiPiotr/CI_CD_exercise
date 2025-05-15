@@ -15,3 +15,5 @@ runs:
         E2E_BASE_URL=baseUrl
         echo "Running E2E tests against $E2E_BASE_URL"
       shell: bash
+      env:
+        E2E_BASE_URL: ${{ inputs.baseUrl }}
