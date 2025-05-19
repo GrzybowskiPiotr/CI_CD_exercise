@@ -25,7 +25,7 @@ jobs:
       - name: Build app
         run: npm run build
         env:
-          VITE_ENVIRONMENT: ${{'Dupa'}}
+          VITE_ENVIRONMENT: ${{'Production'}}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4.2.1
