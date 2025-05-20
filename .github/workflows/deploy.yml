@@ -1,17 +1,21 @@
-name: Depoly
+name: Depoly - MASTER
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
 jobs:
   deploy-netlify:
     uses: ./.github/workflows/deploy-netlify.yml
-    secrets:
-      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    secrets: inherit
 
   deploy-vercel:
     needs: deploy-netlify
     uses: ./.github/workflows/deploy-vercel.yml
+    secrets: inherit
+
+  deploy-aws:
+    needs: deploy-vercel
+    uses: ./.github/workflows/deploy-aws.yml
     secrets: inherit
