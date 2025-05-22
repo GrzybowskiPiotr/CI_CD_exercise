@@ -1,1 +1,7 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"perf","Source":"./modules/perf","Dir":""},{"Key":"pref","Source":"./modules/perf","Dir":"modules/perf"}]}
+{
+  "Modules": [
+    { "Key": "", "Source": "", "Dir": "." },
+    { "Key": "perf", "Source": "./modules/perf", "Dir": "" },
+    { "Key": "pref", "Source": "./modules/perf", "Dir": "modules/perf" }
+  ]
+}
