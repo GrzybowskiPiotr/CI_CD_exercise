@@ -22,7 +22,7 @@ jobs:
         if: success()
         with:
           slack_webhook_url: ${{secrets.SLACK_WEBHOOK_TEST_CHANNEL}}
-          message: 'Job completed successfully!'
+          message: 'Healtcheck completed successfully!'
           type: 'good'
 
       - name: 'Run healthcheck'
@@ -30,5 +30,5 @@ jobs:
         if: failure()
         with:
           slack_webhook_url: ${{secrets.SLACK_WEBHOOK_TEST_CHANNEL}}
-          message: 'Job failed!'
+          message: 'Healtcheck failed!'
           type: 'danger'
