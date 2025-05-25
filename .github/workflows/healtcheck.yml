@@ -2,7 +2,8 @@ name: HEALTCHECK
 
 on:
   workflow_dispatch:
-
+  schedule:
+    - cron: '0 */2 * * *'
 jobs:
   healthcheck:
     runs-on: ubuntu-latest
@@ -13,9 +14,12 @@ jobs:
       - name: Configure node
         uses: ./.github/actions/setup-project
 
+      - name: Run unit tests
+        run: npm run test
+
       - name: Run healthcheck
         uses: ./.github/actions/notify-slack
-        if: ${{job.status == 'success'}}
+        if: success()
         with:
           slack_webhook_url: ${{secrets.SLACK_WEBHOOK_TEST_CHANNEL}}
           message: 'Job completed successfully!'
@@ -23,7 +27,7 @@ jobs:
 
       - name: 'Run healthcheck'
         uses: ./.github/actions/notify-slack
-        if: ${{job.status == 'failure'}}
+        if: failure()
         with:
           slack_webhook_url: ${{secrets.SLACK_WEBHOOK_TEST_CHANNEL}}
           message: 'Job failed!'
