@@ -5,7 +5,7 @@ import { Character } from '../../lib/rick-and-morty-api-client';
 const Characters = () => {
   const { characters } = useLoaderData() as { characters: Character[] };
 
-  console.log("AWS_MONITORING_API" + import.meta.env.VITE_AWS_MONITORING_API);
+  console.log('AWS_MONITORING_API' + import.meta.env.VITE_AWS_MONITORING_API);
 
   useEffect(() => {
     const fetchData: Partial<PerformanceResourceTiming> = performance.getEntriesByName(
