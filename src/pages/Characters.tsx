@@ -15,7 +15,7 @@ const Characters = () => {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify({
-        loadTimeMS: fetchData.responseEnd,
+        loadTimeMs: fetchData.responseEnd,
       }),
     });
   }, [characters]);
