@@ -2,13 +2,6 @@ import { useFlag } from '@featurevisor/react';
 import { Outlet } from 'react-router-dom';
 import { VersionTech } from './components/vesionTech';
 const App = () => {
-  // Log the environment variable to the console
-  console.log('Środowisko VITE_ENVIROMENT' + import.meta.env.VITE_ENVIRONMENT);
-
-  const countryParam = new URLSearchParams(window.location.search).get('country');
-  console.log('Parametr country:', countryParam);
-  // Log the country parameter to the console
-
   const isComponentEnabled = useFlag('versionTech', {
     country: new URLSearchParams(window.location.search).get('country'),
   });
