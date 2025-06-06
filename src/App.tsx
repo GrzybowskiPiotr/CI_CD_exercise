@@ -9,19 +9,16 @@ const App = () => {
   console.log('Parametr country:', countryParam);
   // Log the country parameter to the console
 
-   const isComponentEnabled = useFlag("versionTech", {
-    country: new URLSearchParams(window.location.search).get("country"),
+  const isComponentEnabled = useFlag('versionTech', {
+    country: new URLSearchParams(window.location.search).get('country'),
   });
-
-
-
 
   return (
     <div>
       <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
         <h1 className="text-xl font-bold text-center">🚀 Rick and Morty - Fan Service</h1>
       </div>
-     <Outlet />
+      <Outlet />
       {isComponentEnabled && <VersionTech />}
     </div>
   );
